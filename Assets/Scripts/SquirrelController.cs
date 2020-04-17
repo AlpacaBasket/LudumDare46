@@ -13,10 +13,15 @@ public class SquirrelController : MonoBehaviour
 
     private float currentSpeed;
 
+    // flags ay
+    public bool grounded;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        currentSpeed = 0;
     }
 
     // Update is called once per frame
@@ -24,4 +29,40 @@ public class SquirrelController : MonoBehaviour
     {
         
     }
+
+    // Change criteria to all surfaces
+    private void OnCollisionEnter(Collision theCollision)
+    {
+        if (theCollision.gameObject.name == "Ground")
+        {
+            grounded = true;
+        }
+    }
+
+    // Change criteria to all surfaces
+    private void OnCollisionExit(Collision theCollision)
+    {
+        if (theCollision.gameObject.name == "Ground")
+        {
+            grounded = false;
+        }
+    }
+
+    void Run()
+    {
+
+    }
+
+    void Jump()
+    {
+
+    }
+
+    void Fall()
+    {
+
+    }
+
+
+
 }
