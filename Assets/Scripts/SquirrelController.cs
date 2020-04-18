@@ -1,17 +1,20 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SquirrelController : MonoBehaviour
 {
 
-    private Rigidbody rb;
+    Rigidbody rb;
 
     private float accelleration;
     private float topSpeed;
     private float decelleration;
 
     private float currentSpeed;
+    
+    public enum states { Stand, Skating, Air, Manual, Grind, Tricking, Bail};
+    public states state;
 
     // flags ay
     public bool grounded;
@@ -27,7 +30,17 @@ public class SquirrelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        // Very oversimplified, just to test the state system
+        if (grounded)
+        {
+            state = states.Stand;
+        }
+        else
+        {
+            state = states.Air;
+        }
+
     }
 
     // Change criteria to all surfaces
@@ -48,21 +61,93 @@ public class SquirrelController : MonoBehaviour
         }
     }
 
-    void Run()
+    // Skate forward on the ground
+    void Skate()
     {
 
     }
 
-    void Jump()
-    {
-
-    }
-
+    // Falling in air, use instead of gravity later
     void Fall()
     {
 
     }
 
+    void Ollie()
+    {
+
+    }
+
+    void Manual()
+    {
+
+    }
+
+    void NoseManual()
+    {
+
+    }
+
+    void Grind()
+    {
+
+    }
+
+
+    void Frontside180()
+    {
+
+    }
+
+    void Backside180()
+    {
+
+    }
+
+    void PopShoveIt()
+    {
+
+    }
+
+    void FrontsidePopShoveIt()
+    {
+
+    }
+
+    void Kickflip()
+    {
+
+    }
+
+    void Heelflip()
+    {
+
+    }
+
+    void Impossible()
+    {
+
+    }
+
+    void Backflip()
+    {
+
+    }
+
+    void Frontflip()
+    {
+
+    }
+
+    void ClockwiseRoll()
+    {
+
+    }
+
+    void CounterclockwiseRoll()
+    {
+
+    }
 
 
 }
