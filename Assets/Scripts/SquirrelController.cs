@@ -11,10 +11,12 @@ public class SquirrelController : MonoBehaviour
     private float accelleration;
     private float topSpeed;
     private float decelleration;
+    private Vector3 movement;
+    public float input;
 
     private float currentSpeed;
     
-    public enum states { Stand, Skating, Air, Manual, Grind, Tricking, Bail};
+    public enum states {Stand, Skating, Air, Manual, Grind, Tricking, Bail};
     public states state;
 
     // flags ay
@@ -26,6 +28,11 @@ public class SquirrelController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         currentSpeed = 0;
+
+        // Set properties of skater
+        accelleration = 1;
+        topSpeed = 10;
+        decelleration = 1;
     }
 
     // Update is called once per frame
@@ -40,6 +47,13 @@ public class SquirrelController : MonoBehaviour
         else
         {
             state = states.Air;
+        }
+
+        input = Input.GetAxis("Vertical");
+
+        if (input > 0 && state == states.Stand)
+        {
+            Skate();
         }
 
     }
@@ -68,17 +82,33 @@ public class SquirrelController : MonoBehaviour
         state = states.Skating;
         AnimateSkate();
 
+        input = Input.GetAxis("Vertical");
+
         // Start moving from stand if you hold forward
+        if (input > 0)
+        {
+            // Check if you can accellerate
+            // Go faster until you reach max speed
+            // Speed is unchanged if at or past maximum speed
+            if (currentSpeed < topSpeed)
+            {
+                currentSpeed += accelleration;
+            }
+
+        }
 
         // Go faster if holding ollie
 
         // Slow down to stand if holding back
 
+        movement = new Vector3(0.0f, 0.0f, currentSpeed);
+        rb.transform.Translate(movement);
+
     }
 
     private void AnimateSkate()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     // Falling in air, use instead of gravity later
@@ -94,7 +124,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateOllie()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Manual()
@@ -105,7 +135,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateManual()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void NoseManual()
@@ -116,7 +146,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateNoseManual()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Grind()
@@ -127,7 +157,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateGrind()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Frontside180()
@@ -138,7 +168,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateFrontside180()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Backside180()
@@ -149,7 +179,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateBackside180()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void PopShoveIt()
@@ -160,7 +190,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimatePopShoveIt()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void FrontsidePopShoveIt()
@@ -171,7 +201,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateFrontsidePopShoveIt()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Kickflip()
@@ -182,7 +212,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateKickflip()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Heelflip()
@@ -193,7 +223,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateHeelflip()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Impossible()
@@ -204,7 +234,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateImpossible()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Backflip()
@@ -215,7 +245,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateBackflip()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void Frontflip()
@@ -226,7 +256,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateFrontflip()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void ClockwiseRoll()
@@ -237,7 +267,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateClockwiseRoll()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     void CounterclockwiseRoll()
@@ -248,7 +278,7 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateCounterclockwiseRoll()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 
     // Fall off your board
@@ -260,6 +290,6 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateBail()
     {
-        throw new NotImplementedException();
+        //TODO: Add animation
     }
 }
