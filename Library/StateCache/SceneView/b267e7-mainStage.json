@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":9.644730567932129,"y":-6.7894721031188969,"z":-22.792932510375978},"rotation":{"x":-0.07314348965883255,"y":-0.9153969287872315,"z":0.19397002458572389,"w":-0.3451620042324066},"size":30.657581329345704,"orthographic":false}
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":true,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":17.467113494873048,"y":16.102312088012697,"z":-58.89695739746094},"rotation":{"x":-0.01317906379699707,"y":-0.816251814365387,"z":0.018616043031215669,"w":-0.5772984623908997},"size":32.16388702392578,"orthographic":false}
+>>>>>>> squirrel

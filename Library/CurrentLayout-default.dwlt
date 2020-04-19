@@ -116,7 +116,11 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 392}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
+<<<<<<< HEAD
   controlID: 115
+=======
+  controlID: 15
+>>>>>>> squirrel
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +145,11 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 392}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 116
+=======
+  controlID: 16
+>>>>>>> squirrel
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +174,11 @@ MonoBehaviour:
   m_MinSize: {x: 203, y: 121}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 117
+=======
+  controlID: 17
+>>>>>>> squirrel
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -429,9 +441,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 9.644731, y: -6.789472, z: -22.792933}
     speed: 2
     m_Value: {x: 9.644731, y: -6.789472, z: -22.792933}
+=======
+    m_Target: {x: 17.467113, y: 16.102312, z: -58.896957}
+    speed: 2
+    m_Value: {x: 17.467113, y: 16.102312, z: -58.896957}
+>>>>>>> squirrel
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -477,6 +495,7 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: -0.07314349, y: -0.9153969, z: 0.19397002, w: -0.345162}
     speed: 2
     m_Value: {x: -0.073141195, y: -0.91536826, z: 0.19396394, w: -0.3451512}
@@ -484,6 +503,15 @@ MonoBehaviour:
     m_Target: 30.657581
     speed: 2
     m_Value: 30.657581
+=======
+    m_Target: {x: -0.013179064, y: -0.8162518, z: 0.018616043, w: -0.57729846}
+    speed: 2
+    m_Value: {x: -0.01323445, y: -0.8144915, z: 0.018575856, w: -0.57972693}
+  m_Size:
+    m_Target: 32.163887
+    speed: 2
+    m_Value: 30.77884
+>>>>>>> squirrel
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -665,10 +693,17 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: c2330000
     m_LastClickedID: 13250
     m_ExpandedIDs: 00000000b833000000ca9a3b
+=======
+    scrollPos: {x: 0, y: 46}
+    m_SelectedIDs: 483b0000
+    m_LastClickedID: 15176
+    m_ExpandedIDs: 00000000343b000000ca9a3b
+>>>>>>> squirrel
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -696,7 +731,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: fe260000
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000b8330000
+=======
+    m_ExpandedIDs: 00000000343b0000
+>>>>>>> squirrel
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -723,7 +762,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: a8eeeffffac2f9ff102200001ae9f4ff000000004c65f6ff46220000f2210000f022000054220000ae2200009a2200000a23000020220000b285f8ff5a22000028220000cc2200002e2200004822000032220000ce260000162300006a23000068240000682300002823000044230000842200009c22000010230000ac2200003e22000044260000882200001a2300007622000060220000de210000d2210000da210000e22100002aa4ffff06500000ae260000fc85010050250000a0250000a24400009c2a0000fe27000070260000162800008c270000b425000034eafeffba2500007c29000046260000ea2c0000504b00007e2c0000682f0000062f0000f654f8ff0071acff5630000032300000803f0000b23000008a3300001e3b000088a4ffff6c2f00003a3500001c320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -836,9 +875,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: 18f8ffff
       m_LastClickedID: -2024
       m_ExpandedIDs: 18f8ffff46f8ffffccf8ffff68faffff82faffff70fbffff4e360000
+=======
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 30ebffff
+>>>>>>> squirrel
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
