@@ -6,10 +6,13 @@ using UnityEngine;
 public class SquirrelController : MonoBehaviour
 {
 
-    Rigidbody rb;
+    public Rigidbody rb;
+    public ParkController park; // Reference to park
 
     private float accelleration;
+    private float pressureAccelleration;
     private float topSpeed;
+    private float pressureTopSpeed;
     private float decelleration;
     private Vector3 movement;
     public float input;
@@ -31,7 +34,9 @@ public class SquirrelController : MonoBehaviour
 
         // Set properties of skater
         accelleration = 1;
+        pressureAccelleration = 2;
         topSpeed = 10;
+        pressureTopSpeed = 20;
         decelleration = 1;
     }
 
