@@ -18,6 +18,8 @@ public class SquirrelController : MonoBehaviour
     private float decelleration;
     private float groundTurnSpeed;
     private float airTurnSpeed;
+    private float jumpSpeed;
+    private float gravity;
     private Vector3 movement;
     public float input;
 
@@ -43,11 +45,13 @@ public class SquirrelController : MonoBehaviour
         // Set properties of skater
         accelleration = 1;
         pressureAccelleration = 2;
-        topSpeed = 20;
+        topSpeed = 15;
         pressureTopSpeed = 30;
         groundTurnSpeed = 1;
         airTurnSpeed = 1;
+        jumpSpeed = 40;
         decelleration = 1;
+        gravity = -5;
     }
 
     // Update is called once per frame
@@ -56,10 +60,18 @@ public class SquirrelController : MonoBehaviour
 
         input = Input.GetAxis("Vertical");
 
+        Fall();
+
         // Landed
         if ((state == states.Air) && grounded)
         {
             state = states.Stand;
+        }
+
+        // Classic bail boy
+        if ((state == states.Tricking && grounded))
+        {
+            Bail();
         }
 
         if ((state == states.Stand || state == states.Skating) && Input.GetButtonDown("Manual"))
@@ -70,6 +82,11 @@ public class SquirrelController : MonoBehaviour
         if (input > 0 && (state == states.Stand) || (state == states.Skating))
         {
             Skate();
+        }
+
+        if (grounded && Input.GetButtonUp("Jump"))
+        {
+            Ollie();
         }
 
         if ((state == states.Air) && Input.GetButtonDown("Flip"))
@@ -97,6 +114,16 @@ public class SquirrelController : MonoBehaviour
             state = states.Air;
         }
 
+        
+        if (grounded) // Ground turn
+        {
+            transform.Rotate(Vector3.up, (Input.GetAxis("Horizontal") * groundTurnSpeed));
+        }
+        else // Air turn
+        {
+            transform.Rotate(Vector3.up, (Input.GetAxis("Horizontal") * airTurnSpeed));
+        }
+        
     }
 
     private void FixedUpdate()
@@ -110,28 +137,6 @@ public class SquirrelController : MonoBehaviour
             grounded = false;
         }
     }
-
-    /* big charlie, alternative method above
-    // Change criteria to all surfaces
-    private void OnCollisionEnter(Collision theCollision)
-    {
-        if (theCollision.gameObject.CompareTag("Ground"))
-        {
-            groundCollisionsTouching++;
-            grounded = true;
-        }
-    }
-
-    // Change criteria to all surfaces
-    private void OnCollisionExit(Collision theCollision)
-    {
-        if (theCollision.gameObject.CompareTag("Ground"))
-        {
-            groundCollisionsTouching--;
-            if(groundCollisionsTouching <= 0)
-            grounded = false;
-        }
-    }*/
 
     // Skate forward on the ground
     void Skate()
@@ -165,14 +170,9 @@ public class SquirrelController : MonoBehaviour
             squirrelAnimator.SetBool("Pressuring", false);
         }
 
-        // Turn
-        transform.Rotate(Vector3.up, (Input.GetAxis("Horizontal") * groundTurnSpeed));
-
         // Slow down to stand if holding back
 
-        //movement = new Vector3(0.0f, 0.0f, currentSpeed); big charlie
         movement = transform.forward * currentSpeed;
-        //rb.transform.Translate(movement); big charlie
         rb.velocity = movement;
 
     }
@@ -185,7 +185,8 @@ public class SquirrelController : MonoBehaviour
     // Falling in air, use instead of gravity later
     void Fall()
     {
-
+        movement = transform.up * gravity;
+        rb.velocity = movement;
     }
 
     void Ollie()
@@ -193,6 +194,9 @@ public class SquirrelController : MonoBehaviour
         AnimateOllie();
         currentTrick = new ollie();
         park.PerformedTrick(currentTrick);
+
+        movement = transform.up * jumpSpeed;
+        rb.velocity = movement;
     }
 
     private void AnimateOllie()
