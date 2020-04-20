@@ -15,4 +15,15 @@ public class HUD : MonoBehaviour
     {
         
     }
+
+    public void DisplayPopularity(int p)
+    {
+
+    }
+
+    public void DisplayMessage(string m)
+    {
+
+    }
+
 }

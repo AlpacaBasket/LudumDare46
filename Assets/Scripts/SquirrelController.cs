@@ -16,6 +16,8 @@ public class SquirrelController : MonoBehaviour
     private float topSpeed;
     private float pressureTopSpeed;
     private float decelleration;
+    private float groundTurnSpeed;
+    private float airTurnSpeed;
     private Vector3 movement;
     public float input;
 
@@ -41,6 +43,8 @@ public class SquirrelController : MonoBehaviour
         pressureAccelleration = 2;
         topSpeed = 20;
         pressureTopSpeed = 30;
+        groundTurnSpeed = 1;
+        airTurnSpeed = 1;
         decelleration = 1;
     }
 
@@ -60,12 +64,13 @@ public class SquirrelController : MonoBehaviour
 
         input = Input.GetAxis("Vertical");
 
-        if (input > 0 && state == states.Stand)
+        if (input > 0 && (state == states.Stand) || (state == states.Skating))
         {
             Skate();
         }
 
     }
+
     private void FixedUpdate()
     {
         RaycastHit hit;
@@ -119,6 +124,7 @@ public class SquirrelController : MonoBehaviour
             }
         }
 
+        // Go faster if holding ollie
         if (Input.GetButton("Fire1"))
         {
             squirrelAnimator.SetBool("Pressuring", true);
@@ -131,9 +137,8 @@ public class SquirrelController : MonoBehaviour
             squirrelAnimator.SetBool("Pressuring", false);
         }
 
-        transform.Rotate(Vector3.up, Input.GetAxis("Horizontal"));
-
-        // Go faster if holding ollie
+        // Turn
+        transform.Rotate(Vector3.up, (Input.GetAxis("Horizontal") * groundTurnSpeed));
 
         // Slow down to stand if holding back
 
@@ -159,6 +164,7 @@ public class SquirrelController : MonoBehaviour
     void Ollie()
     {
         AnimateOllie();
+        park.PerformedTrick("ollie");
     }
 
     private void AnimateOllie()
@@ -170,6 +176,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Manual;
         AnimateManual();
+        park.PerformedTrick("manual");
     }
 
     private void AnimateManual()
@@ -181,6 +188,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Manual;
         AnimateNoseManual();
+        park.PerformedTrick("nosemanual");
     }
 
     private void AnimateNoseManual()
@@ -192,6 +200,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Grind;
         AnimateGrind();
+        park.PerformedTrick("grind");
     }
 
     private void AnimateGrind()
@@ -203,6 +212,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateFrontside180();
+        park.PerformedTrick("frontside180");
     }
 
     private void AnimateFrontside180()
@@ -214,6 +224,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateBackside180();
+        park.PerformedTrick("backside180");
     }
 
     private void AnimateBackside180()
@@ -225,6 +236,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimatePopShoveIt();
+        park.PerformedTrick("popshoveit");
     }
 
     private void AnimatePopShoveIt()
@@ -236,6 +248,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateFrontsidePopShoveIt();
+        park.PerformedTrick("frontsidepopshoveit");
     }
 
     private void AnimateFrontsidePopShoveIt()
@@ -247,6 +260,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateKickflip();
+        park.PerformedTrick("kickflip");
     }
 
     private void AnimateKickflip()
@@ -258,6 +272,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateHeelflip();
+        park.PerformedTrick("heelflip");
     }
 
     private void AnimateHeelflip()
@@ -269,6 +284,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateImpossible();
+        park.PerformedTrick("impossible");
     }
 
     private void AnimateImpossible()
@@ -280,6 +296,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateBackflip();
+        park.PerformedTrick("backflip");
     }
 
     private void AnimateBackflip()
@@ -291,6 +308,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateFrontflip();
+        park.PerformedTrick("frontflip");
     }
 
     private void AnimateFrontflip()
@@ -302,6 +320,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateClockwiseRoll();
+        park.PerformedTrick("clockwiseroll");
     }
 
     private void AnimateClockwiseRoll()
@@ -313,6 +332,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateCounterclockwiseRoll();
+        park.PerformedTrick("counterclockwiseroll");
     }
 
     private void AnimateCounterclockwiseRoll()
@@ -321,10 +341,12 @@ public class SquirrelController : MonoBehaviour
     }
 
     // Fall off your board
+    // Classic bail boy
     void Bail()
     {
         state = states.Bail;
         AnimateBail();
+        park.PerformedTrick("bail");
     }
 
     private void AnimateBail()

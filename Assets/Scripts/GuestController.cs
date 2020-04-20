@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,10 +28,9 @@ public class GuestController : MonoBehaviour
 
     // Display an emote above guest's head
     // Might need a canvas object
-    void ShowEmotion(Emotion e)
+    public void ShowEmotion(string v)
     {
-
+        throw new NotImplementedException();
     }
-
 
 }
