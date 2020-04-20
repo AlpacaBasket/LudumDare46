@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\SquirrelController.cs" />
     <None Include="Assets\Shaders\FurHelper.cginc" />
     <None Include="Assets\Shaders\FurShader.shader" />
+    <None Include="Assets\Shaders\Sea.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Charlie/GitRepos/LudumDare46/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         targetSmooth = target.position;
+        Camera.main.depthTextureMode = DepthTextureMode.Depth;
     }
 
     // Update is called once per frame
@@ -32,6 +33,14 @@ public class CameraController : MonoBehaviour
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
 
         targetSmooth = Vector3.Lerp(targetSmooth, target.position, Time.deltaTime * moveSpeed);
+
+        if (transform.eulerAngles.x > 45 && transform.eulerAngles.x < 100 && -Input.GetAxisRaw("Mouse Y") <= 0
+        || transform.eulerAngles.x < 330 && transform.eulerAngles.x > 100 && -Input.GetAxisRaw("Mouse Y") >= 0
+        || (transform.eulerAngles.x < 45 && transform.eulerAngles.x >= -1)
+        || (transform.eulerAngles.x > 330 && transform.eulerAngles.x <= 361))
+        {
+            transform.Rotate(Vector3.right * 1.4f * -Input.GetAxis("Mouse Y"));
+        }
 
         transform.position = targetSmooth + (Vector3.up * 5f) - transform.forward * distance;
     }
