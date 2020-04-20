@@ -53,31 +53,54 @@ public class SquirrelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /**
-        // Very oversimplified, just to test the state system
-        if (grounded)
+
+        input = Input.GetAxis("Vertical");
+
+        // Landed
+        if ((state == states.Air) && grounded)
         {
             state = states.Stand;
         }
-        else
-        {
-            state = states.Air;
-        }
 
-        input = Input.GetAxis("Vertical");
+        if ((state == states.Stand || state == states.Skating) && Input.GetButtonDown("Manual"))
+        {
+            Manual();
+        }
 
         if (input > 0 && (state == states.Stand) || (state == states.Skating))
         {
             Skate();
         }
-        */
+
+        if ((state == states.Air) && Input.GetButtonDown("Flip"))
+        {
+            if (Input.GetAxis("Horizontal") > 0) // Right
+            {
+                Kickflip();
+            }
+            else if (Input.GetAxis("Horizontal") < 0) // Left
+            {
+                Heelflip();
+            }
+            else if (Input.GetAxis("Vertical") > 0) // Up
+            {
+                Impossible();
+            }
+            else if (Input.GetAxis("Vertical") < 0) // Down
+            {
+                PopShoveIt();
+            }
+        }
+
+        if (!grounded && (state != states.Tricking))
+        {
+            state = states.Air;
+        }
 
     }
 
     private void FixedUpdate()
     {
-
-        Kickflip();
         RaycastHit hit;
         if (Physics.SphereCast(transform.position, 0.05f, -transform.up, out hit, 2f, groundedLayer))
         {
@@ -130,7 +153,7 @@ public class SquirrelController : MonoBehaviour
         }
 
         // Go faster if holding ollie
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Jump"))
         {
             squirrelAnimator.SetBool("Pressuring", true);
             if (currentSpeed < pressureTopSpeed)
@@ -272,9 +295,7 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateKickflip();
-        Debug.Log(1 + " Current trick: " + currentTrick.GetDisplayName());
         currentTrick = new kickflip();
-        Debug.Log(2 + " Current trick: " + currentTrick.GetDisplayName());
         park.PerformedTrick(currentTrick);
     }
 
