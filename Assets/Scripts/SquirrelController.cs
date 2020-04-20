@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Rigidbody))]
 public class SquirrelController : MonoBehaviour
 {
 
     public Rigidbody rb;
     public ParkController park; // Reference to park
+    public Animator squirrelAnimator;
+    public LayerMask groundedLayer;
 
     private float accelleration;
     private float pressureAccelleration;
@@ -24,6 +26,8 @@ public class SquirrelController : MonoBehaviour
 
     // flags ay
     public bool grounded;
+    private int groundCollisionsTouching = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +39,8 @@ public class SquirrelController : MonoBehaviour
         // Set properties of skater
         accelleration = 1;
         pressureAccelleration = 2;
-        topSpeed = 10;
-        pressureTopSpeed = 20;
+        topSpeed = 20;
+        pressureTopSpeed = 30;
         decelleration = 1;
     }
 
@@ -62,12 +66,25 @@ public class SquirrelController : MonoBehaviour
         }
 
     }
+    private void FixedUpdate()
+    {
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, 0.05f, -transform.up, out hit, 2f, groundedLayer))
+        {
+            grounded = true;
+        } else
+        {
+            grounded = false;
+        }
+    }
 
+    /* big charlie, alternative method above
     // Change criteria to all surfaces
     private void OnCollisionEnter(Collision theCollision)
     {
-        if (theCollision.gameObject.name == "Ground")
+        if (theCollision.gameObject.CompareTag("Ground"))
         {
+            groundCollisionsTouching++;
             grounded = true;
         }
     }
@@ -75,11 +92,13 @@ public class SquirrelController : MonoBehaviour
     // Change criteria to all surfaces
     private void OnCollisionExit(Collision theCollision)
     {
-        if (theCollision.gameObject.name == "Ground")
+        if (theCollision.gameObject.CompareTag("Ground"))
         {
+            groundCollisionsTouching--;
+            if(groundCollisionsTouching <= 0)
             grounded = false;
         }
-    }
+    }*/
 
     // Skate forward on the ground
     void Skate()
@@ -88,7 +107,6 @@ public class SquirrelController : MonoBehaviour
         AnimateSkate();
 
         input = Input.GetAxis("Vertical");
-
         // Start moving from stand if you hold forward
         if (input > 0)
         {
@@ -99,21 +117,37 @@ public class SquirrelController : MonoBehaviour
             {
                 currentSpeed += accelleration;
             }
-
         }
+
+        if (Input.GetButton("Fire1"))
+        {
+            squirrelAnimator.SetBool("Pressuring", true);
+            if (currentSpeed < pressureTopSpeed)
+            {
+                currentSpeed += pressureAccelleration;
+            }
+        } else
+        {
+            squirrelAnimator.SetBool("Pressuring", false);
+        }
+
+        transform.Rotate(Vector3.up, Input.GetAxis("Horizontal"));
 
         // Go faster if holding ollie
 
         // Slow down to stand if holding back
 
-        movement = new Vector3(0.0f, 0.0f, currentSpeed);
-        rb.transform.Translate(movement);
+        //movement = new Vector3(0.0f, 0.0f, currentSpeed); big charlie
+        movement = transform.forward * currentSpeed;
+        //rb.transform.Translate(movement); big charlie
+        rb.velocity = movement;
 
     }
 
     private void AnimateSkate()
     {
         //TODO: Add animation
+        squirrelAnimator.SetTrigger("Push_Off");
     }
 
     // Falling in air, use instead of gravity later

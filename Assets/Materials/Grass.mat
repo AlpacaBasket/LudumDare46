@@ -41,11 +41,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FurTex:
         m_Texture: {fileID: 2800000, guid: fac82bad8dda4374eb6ec0abae199285, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Scale: {x: 30, y: 30}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 7d0d0198e3eb3304db2f550c3194ac99, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Scale: {x: 30, y: 30}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -69,9 +69,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _FurDensity: 2
-    - _FurLength: 0.012
-    - _FurShading: 0.188
-    - _FurThinness: 2.9
+    - _FurLength: 0.555
+    - _FurShading: 0.21
+    - _FurThinness: 4.7
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
