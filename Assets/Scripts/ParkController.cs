@@ -11,6 +11,8 @@ public class ParkController : MonoBehaviour
     private int popularity; // 0-100 maybe
     private List<GuestController> guests; // List of guests
 
+    // Add spawn points
+
     // Start is called before the first frame update
     void Start()
     {

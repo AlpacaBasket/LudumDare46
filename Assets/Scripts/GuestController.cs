@@ -14,6 +14,10 @@ public class GuestController : MonoBehaviour
     private enum Emotion { angry, cry, frown, happy, heart, laugh, ok, smile, wink, wow};
     private int happiness; // 1 - 100
 
+    private Color colour;
+    private List<Trick> favouriteTricks;
+    private List<Trick> hatedTricks;
+
     // Start is called before the first frame update
     void Start()
     {
