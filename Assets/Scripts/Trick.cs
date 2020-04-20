@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class Trick : MonoBehaviour
 {
 
-    private int points;
-    private string displayname;
+    protected int points;
+    protected string displayname;
 
     public void setPoints(int i)
     {

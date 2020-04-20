@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class backside180 : MonoBehaviour
+public class backside180 : Trick
 {
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        this.points = 69;
+        this.displayname = "Backside 180";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
