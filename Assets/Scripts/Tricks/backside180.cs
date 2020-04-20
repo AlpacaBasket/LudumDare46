@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class backside180 : Trick
 {
-
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = 69;
-        this.displayname = "Backside 180";
+        return "Backside 180";
+    }
+
+    public int GetPoints()
+    {
+        return 69;
     }
 
 }

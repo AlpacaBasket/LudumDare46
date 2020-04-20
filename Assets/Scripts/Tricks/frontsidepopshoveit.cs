@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class frontsidepopshoveit : Trick
 {
-    // Start is called before the first frame update
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = 69;
-        this.displayname = "Frontside Pop Shove-it";
+        return "Frontside Pop Shove-it";
+    }
+
+    public int GetPoints()
+    {
+        return 69;
     }
 
 }

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class frontflip : Trick
 {
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = 420;
-        this.displayname = "Frontflip";
+        return "Frontflip";
+    }
+
+    public int GetPoints()
+    {
+        return 420;
     }
 
 }

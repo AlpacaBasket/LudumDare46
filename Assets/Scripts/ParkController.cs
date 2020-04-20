@@ -26,9 +26,9 @@ public class ParkController : MonoBehaviour
         hud.DisplayPopularity(popularity);
     }
 
-    public void PerformedTrick(string trick)
+    public void PerformedTrick(Trick t)
     {
-        
+        Debug.Log(3 + " Current trick: " + t.GetDisplayName());
     }
 
     public int getPopularity()

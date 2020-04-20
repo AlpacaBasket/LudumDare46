@@ -22,6 +22,7 @@ public class SquirrelController : MonoBehaviour
     public float input;
 
     private float currentSpeed;
+    public Trick currentTrick;
     
     public enum states {Stand, Skating, Air, Manual, Grind, Tricking, Bail};
     public states state;
@@ -37,6 +38,7 @@ public class SquirrelController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         currentSpeed = 0;
+        currentTrick = new ollie();
 
         // Set properties of skater
         accelleration = 1;
@@ -52,6 +54,8 @@ public class SquirrelController : MonoBehaviour
     void Update()
     {
 
+        Kickflip();
+        /**
         // Very oversimplified, just to test the state system
         if (grounded)
         {
@@ -68,6 +72,7 @@ public class SquirrelController : MonoBehaviour
         {
             Skate();
         }
+        */
 
     }
 
@@ -151,7 +156,6 @@ public class SquirrelController : MonoBehaviour
 
     private void AnimateSkate()
     {
-        //TODO: Add animation
         squirrelAnimator.SetTrigger("Push_Off");
     }
 
@@ -164,7 +168,8 @@ public class SquirrelController : MonoBehaviour
     void Ollie()
     {
         AnimateOllie();
-        park.PerformedTrick("ollie");
+        currentTrick = new ollie();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateOllie()
@@ -176,7 +181,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Manual;
         AnimateManual();
-        park.PerformedTrick("manual");
+        currentTrick = new Manual();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateManual()
@@ -188,7 +194,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Manual;
         AnimateNoseManual();
-        park.PerformedTrick("nosemanual");
+        currentTrick = new noseManual();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateNoseManual()
@@ -200,7 +207,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Grind;
         AnimateGrind();
-        park.PerformedTrick("grind");
+        currentTrick = new grind();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateGrind()
@@ -212,7 +220,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateFrontside180();
-        park.PerformedTrick("frontside180");
+        currentTrick = new frontside180();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateFrontside180()
@@ -224,7 +233,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateBackside180();
-        park.PerformedTrick("backside180");
+        currentTrick = new backside180();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateBackside180()
@@ -236,7 +246,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimatePopShoveIt();
-        park.PerformedTrick("popshoveit");
+        currentTrick = new popshoveit();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimatePopShoveIt()
@@ -248,7 +259,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateFrontsidePopShoveIt();
-        park.PerformedTrick("frontsidepopshoveit");
+        currentTrick = new frontsidepopshoveit();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateFrontsidePopShoveIt()
@@ -260,7 +272,10 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateKickflip();
-        park.PerformedTrick("kickflip");
+        Debug.Log(1 + " Current trick: " + currentTrick.GetDisplayName());
+        currentTrick = new ollie();
+        Debug.Log(2 + " Current trick: " + currentTrick.GetDisplayName());
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateKickflip()
@@ -272,7 +287,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateHeelflip();
-        park.PerformedTrick("heelflip");
+        currentTrick = new heelflip();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateHeelflip()
@@ -284,7 +300,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Tricking;
         AnimateImpossible();
-        park.PerformedTrick("impossible");
+        currentTrick = new impossible();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateImpossible()
@@ -295,49 +312,29 @@ public class SquirrelController : MonoBehaviour
     void Backflip()
     {
         state = states.Tricking;
-        AnimateBackflip();
-        park.PerformedTrick("backflip");
-    }
-
-    private void AnimateBackflip()
-    {
-        //TODO: Add animation
+        currentTrick = new backflip();
+        park.PerformedTrick(currentTrick);
     }
 
     void Frontflip()
     {
         state = states.Tricking;
-        AnimateFrontflip();
-        park.PerformedTrick("frontflip");
-    }
-
-    private void AnimateFrontflip()
-    {
-        //TODO: Add animation
+        currentTrick = new frontflip();
+        park.PerformedTrick(currentTrick);
     }
 
     void ClockwiseRoll()
     {
         state = states.Tricking;
-        AnimateClockwiseRoll();
-        park.PerformedTrick("clockwiseroll");
-    }
-
-    private void AnimateClockwiseRoll()
-    {
-        //TODO: Add animation
+        currentTrick = new clockwiseroll();
+        park.PerformedTrick(currentTrick);
     }
 
     void CounterclockwiseRoll()
     {
         state = states.Tricking;
-        AnimateCounterclockwiseRoll();
-        park.PerformedTrick("counterclockwiseroll");
-    }
-
-    private void AnimateCounterclockwiseRoll()
-    {
-        //TODO: Add animation
+        currentTrick = new counterclockwiseroll();
+        park.PerformedTrick(currentTrick);
     }
 
     // Fall off your board
@@ -346,7 +343,8 @@ public class SquirrelController : MonoBehaviour
     {
         state = states.Bail;
         AnimateBail();
-        park.PerformedTrick("bail");
+        currentTrick = new bail();
+        park.PerformedTrick(currentTrick);
     }
 
     private void AnimateBail()

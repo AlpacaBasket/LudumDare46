@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class clockwiseroll : Trick
 {
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = 420;
-        this.displayname = "FS Roll";
+        return "FS Roll";
+    }
+
+    public int GetPoints()
+    {
+        return 420;
     }
 
 }

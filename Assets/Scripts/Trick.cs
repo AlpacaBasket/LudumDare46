@@ -2,30 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Trick : MonoBehaviour
+public interface Trick
 {
 
-    protected int points;
-    protected string displayname;
+    int GetPoints();
 
-    public void setPoints(int i)
-    {
-        this.points = i;
-    }
-
-    public int getPoints()
-    {
-        return this.points;
-    }
-
-    public void setname(string s)
-    {
-        this.displayname = s;
-    }
-
-    public string getname()
-    {
-        return this.displayname;
-    }
+    string GetDisplayName();
 
 }

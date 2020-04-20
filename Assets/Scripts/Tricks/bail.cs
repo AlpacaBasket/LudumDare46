@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class bail : Trick
 {
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = -100;
-        this.displayname = "Bail";
+        return "Bail";
+    }
+
+    public int GetPoints()
+    {
+        return -100;
     }
 
 }

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class impossible : Trick
 {
-
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = 69;
-        this.displayname = "Impossible!!!!";
+        return "Impossible";
+    }
+
+    public int GetPoints()
+    {
+        return 69;
     }
 
 }

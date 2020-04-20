@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ollie : MonoBehaviour
+public class ollie : Trick
 {
-    // Start is called before the first frame update
-    void Start()
+    public string GetDisplayName()
     {
-        
+        return "Ollie"; 
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetPoints()
     {
-        
+        return 0;
     }
 }

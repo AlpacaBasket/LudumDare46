@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class backflip : Trick
 {
-
-    private void Start()
+    public string GetDisplayName()
     {
-        this.points = 420;
-        this.displayname = "Backflip";
+        return "Backflip";
+    }
+
+    public int GetPoints()
+    {
+        return 420;
     }
 
 }

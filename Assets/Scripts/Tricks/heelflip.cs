@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class heelflip : Trick
 {
-  
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = 69;
-        this.displayname = "Heelflip";
+        return "Heelflip";
+    }
+
+    public int GetPoints()
+    {
+        return 69;
     }
 
 }

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class kickflip : Trick
 {
-    // Start is called before the first frame update
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = 69;
-        this.displayname = "Kickflip";
+        return "Kickflip";
+    }
+
+    public int GetPoints()
+    {
+        return 69;
     }
 
 }

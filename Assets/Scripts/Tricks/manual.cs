@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Manual : Trick
 {
-    // Start is called before the first frame update
-    void Start()
+    public string GetDisplayName()
     {
-        this.points = 1;
-        this.displayname = "Manual";
+        return "Manual";
+    }
+
+    public int GetPoints()
+    {
+        return 1;
     }
 
 }
