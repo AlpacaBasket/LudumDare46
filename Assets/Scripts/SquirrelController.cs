@@ -53,8 +53,6 @@ public class SquirrelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Kickflip();
         /**
         // Very oversimplified, just to test the state system
         if (grounded)
@@ -78,6 +76,8 @@ public class SquirrelController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        Kickflip();
         RaycastHit hit;
         if (Physics.SphereCast(transform.position, 0.05f, -transform.up, out hit, 2f, groundedLayer))
         {
@@ -273,7 +273,7 @@ public class SquirrelController : MonoBehaviour
         state = states.Tricking;
         AnimateKickflip();
         Debug.Log(1 + " Current trick: " + currentTrick.GetDisplayName());
-        currentTrick = new ollie();
+        currentTrick = new kickflip();
         Debug.Log(2 + " Current trick: " + currentTrick.GetDisplayName());
         park.PerformedTrick(currentTrick);
     }
